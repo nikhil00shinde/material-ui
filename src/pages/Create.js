@@ -1,9 +1,12 @@
 import React from "react";
 import Typography from "@mui/material/Typography"; //import { Typography } from "@mui/material";
+import Button from "@mui/material/Button";
+import ButtonGroup from "@mui/material/ButtonGroup";
+import Container from "@mui/material/Container";
 
 export default function Create() {
 	return (
-		<div>
+		<Container>
 			<Typography
 				variant="h6"
 				color="textSecondary"
@@ -12,24 +15,28 @@ export default function Create() {
 			>
 				Create a New Note
 			</Typography>
-			{/* <Typography variant="h1" color="primary" align="center">
-				Create a New Note
-			</Typography>
-			<Typography noWrap color="secondary">
-				Lorem ipsum dolor, sit amet consectetur adipisicing elit. Itaque
-				molestiae magnam voluptate reiciendis fuga totam facere officia, animi
-				sint laboriosam dolorum voluptas cupiditate explicabo dolore veritatis
-				recusandae rem inventore sunt.
-			</Typography> */}
-		</div>
+
+			<Button
+				onClick={() => console.log("you Clicked me")}
+				type="submit"
+				color="secondary"
+				variant="contained"
+			>
+				Submit
+			</Button>
+
+			{/* <Button type="submit">Submit</Button>
+			<Button type="submit" color="secondary" variant="outlined">
+				Submit
+			</Button>
+			<ButtonGroup color="secondary" variant="contained" disableElevation>
+				<Button>One</Button>
+				<Button>Two</Button>
+				<Button>Three</Button>
+			</ButtonGroup> */}
+		</Container>
 	);
 }
 
-//We pass props to component as varaint, component
-
-//variant -> applies the theme typography styles.
-//component -> The component used for the root node.Either a string to use a HTML element or a component.
-// align -> set the text-align on the component
-//gutterBottom -> If true, the text will have a bottom margin.
-// noWrap -> If true, the text will not wrap, but instead will truncate with a text overflow.
-// color -> used for color.(primary,secondary,textSecondary)
+//In the button case we pass variant as contained,outlined or nothing(default button without variant property)
+// Container is wrapper for several components and it gives padding n margin automaticaly

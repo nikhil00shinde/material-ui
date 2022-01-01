@@ -1,8 +1,10 @@
 import React from "react";
 import Typography from "@mui/material/Typography"; //import { Typography } from "@mui/material";
 import Button from "@mui/material/Button";
-import ButtonGroup from "@mui/material/ButtonGroup";
 import Container from "@mui/material/Container";
+import AcUnitOutlinedIcon from "@mui/icons-material/AcUnitOutlined";
+import SendIcon from '@mui/icons-material/Send';
+import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 
 export default function Create() {
 	return (
@@ -16,27 +18,31 @@ export default function Create() {
 				Create a New Note
 			</Typography>
 
+			{/* Apply icon to button */}
+
 			<Button
 				onClick={() => console.log("you Clicked me")}
 				type="submit"
 				color="secondary"
 				variant="contained"
+				startIcon={<SendIcon />}
+				endIcon={<KeyboardArrowRightIcon/>}
 			>
 				Submit
 			</Button>
 
-			{/* <Button type="submit">Submit</Button>
-			<Button type="submit" color="secondary" variant="outlined">
-				Submit
-			</Button>
-			<ButtonGroup color="secondary" variant="contained" disableElevation>
-				<Button>One</Button>
-				<Button>Two</Button>
-				<Button>Three</Button>
-			</ButtonGroup> */}
+			{/* icons */}
+			{/* <br />
+			<AcUnitOutlinedIcon />
+			<AcUnitOutlinedIcon color="secondary" fontSize="large" />
+			<AcUnitOutlinedIcon color="secondary" fontSize="small" />
+			<AcUnitOutlinedIcon color="action" fontSize="small" />
+			<AcUnitOutlinedIcon color="error" fontSize="small" />
+			<AcUnitOutlinedIcon color="disabled" fontSize="small" /> */}
 		</Container>
 	);
 }
 
-//In the button case we pass variant as contained,outlined or nothing(default button without variant property)
-// Container is wrapper for several components and it gives padding n margin automaticaly
+// install material ui icon library to use icons
+// props -> color, fontSize(large,small)
+// Apply icon to button using props as startIcon and endIcon

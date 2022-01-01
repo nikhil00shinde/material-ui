@@ -1,15 +1,34 @@
 import React from "react";
+import { makeStyles } from "@mui/styles";
 import Typography from "@mui/material/Typography"; //import { Typography } from "@mui/material";
 import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
-import AcUnitOutlinedIcon from "@mui/icons-material/AcUnitOutlined";
-import SendIcon from '@mui/icons-material/Send';
-import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
+import SendIcon from "@mui/icons-material/Send";
+import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
+
+//very useFull for adding extra custom css rule
+const useStyles = makeStyles({
+	btn: {
+		fontSize: "60px!important",
+		backgroundColor: "violet!important",
+		// apply hover
+		"&:hover": {
+			backgroundColor: "blue!important",
+		},
+	},
+	title: {
+		textDecoration: "underline",
+		marginBottom: 20,
+	},
+});
 
 export default function Create() {
+	// we invoke that hook given by makeStyles function
+	const classes = useStyles();
 	return (
 		<Container>
 			<Typography
+				className={classes.title}
 				variant="h6"
 				color="textSecondary"
 				component="h2"
@@ -18,15 +37,16 @@ export default function Create() {
 				Create a New Note
 			</Typography>
 
-			{/* Apply icon to button */}
+			{/* Apply css to button */}
 
 			<Button
+				className={classes.btn}
 				onClick={() => console.log("you Clicked me")}
 				type="submit"
 				color="secondary"
 				variant="contained"
 				startIcon={<SendIcon />}
-				endIcon={<KeyboardArrowRightIcon/>}
+				endIcon={<KeyboardArrowRightIcon />}
 			>
 				Submit
 			</Button>
@@ -43,6 +63,7 @@ export default function Create() {
 	);
 }
 
-// install material ui icon library to use icons
-// props -> color, fontSize(large,small)
-// Apply icon to button using props as startIcon and endIcon
+// We can use fullystyle button with built in css in mui
+// sometimes we want style in our way, so we use function called makeStyles
+// using this function we can create css classes and rules using javascript object.
+// then this return a react hook, then we use inside our component to access those styles n classes

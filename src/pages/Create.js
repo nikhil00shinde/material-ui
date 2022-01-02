@@ -6,24 +6,9 @@ import Container from "@mui/material/Container";
 import SendIcon from "@mui/icons-material/Send";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 
-//very useFull for adding extra custom css rule
-const useStyles = makeStyles({
-	btn: {
-		fontSize: "60px!important",
-		backgroundColor: "violet!important",
-		// apply hover
-		"&:hover": {
-			backgroundColor: "blue!important",
-		},
-	},
-	title: {
-		textDecoration: "underline",
-		marginBottom: 20,
-	},
-});
+const useStyles = makeStyles({});
 
 export default function Create() {
-	// we invoke that hook given by makeStyles function
 	const classes = useStyles();
 	return (
 		<Container>
@@ -37,10 +22,7 @@ export default function Create() {
 				Create a New Note
 			</Typography>
 
-			{/* Apply css to button */}
-
 			<Button
-				className={classes.btn}
 				onClick={() => console.log("you Clicked me")}
 				type="submit"
 				color="secondary"
@@ -50,20 +32,6 @@ export default function Create() {
 			>
 				Submit
 			</Button>
-
-			{/* icons */}
-			{/* <br />
-			<AcUnitOutlinedIcon />
-			<AcUnitOutlinedIcon color="secondary" fontSize="large" />
-			<AcUnitOutlinedIcon color="secondary" fontSize="small" />
-			<AcUnitOutlinedIcon color="action" fontSize="small" />
-			<AcUnitOutlinedIcon color="error" fontSize="small" />
-			<AcUnitOutlinedIcon color="disabled" fontSize="small" /> */}
 		</Container>
 	);
 }
-
-// We can use fullystyle button with built in css in mui
-// sometimes we want style in our way, so we use function called makeStyles
-// using this function we can create css classes and rules using javascript object.
-// then this return a react hook, then we use inside our component to access those styles n classes

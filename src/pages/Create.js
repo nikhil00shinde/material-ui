@@ -9,11 +9,9 @@ import TextField from "@mui/material/TextField";
 import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
 import { FormControlLabel } from "@mui/material";
-// Wrapper for certain section of form (to put form label and radiogroup in same context)
 import FormControl from "@mui/material/FormControl";
-
-//  FormLabel apply label to different form section
 import FormLabel from "@mui/material/FormLabel";
+import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles({
 	field: {
@@ -25,6 +23,8 @@ const useStyles = makeStyles({
 
 export default function Create() {
 	const classes = useStyles();
+
+	let history = useHistory();
 
 	const [title, setTitle] = useState("");
 	const [details, setDetails] = useState("");
@@ -47,7 +47,15 @@ export default function Create() {
 		}
 
 		if (title && details) {
-			console.log(title, details, category);
+			fetch("http://localhost:8000/notes", {
+				method: "post",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify({ title, details, category }),
+			}).then(() => {
+				history.push("/");
+			});
 		}
 	};
 
@@ -90,23 +98,8 @@ export default function Create() {
 					error={detailsError}
 				></TextField>
 
-				{/* Here user can choose both radio button pr humhe ek choose karna hain */}
-				{/* <Radio value="hello" />
-				<Radio value="goodbye" /> */}
-
-				{/* ek choose karne ke liye Radiogroup component ka use karenge, unko iske andhar wrap kar denge */}
-				{/* <RadioGroup>
-					<Radio value="hello"></Radio>
-					<Radio value="goodbye"></Radio>
-				</RadioGroup> */}
-
-				{/* isey bhi accha ek way hain jisse aap label bhi add kar sakte us radio button par */}
-				{/* FormControllLabel ko control property denge jo radio component lenga */}
-				{/* humhe value bhi store and by default select bhi karna hain RadioGroup ko value de do taki by default todos select ho jaye*/}
-				{/* baki select karne ke liye onChange RadioGroup */}
-
 				<FormControl className={classes.field}>
-					<FormLabel>Note Category</FormLabel>
+					<FormLabel color="secondary">Note Category</FormLabel>
 					<RadioGroup
 						value={category}
 						onChange={(e) => setCategory(e.target.value)}
@@ -145,6 +138,3 @@ export default function Create() {
 		</Container>
 	);
 }
-
-// Radio buttons allow the user to select one option from a set.
-// Radio ke pass value attribute jimse hum uski value store karte ahain

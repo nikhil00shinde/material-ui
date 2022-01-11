@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import Grid from "@mui/material/Grid";
-import Paper from "@mui/material/Paper";
 import Container from "@mui/material/Container";
 import NoteCard from "../components/NoteCard";
 
@@ -18,7 +17,7 @@ export default function Notes() {
 			method: "DELETE",
 		});
 
-		const newNotes = notes.filter((note) => note.id != id);
+		const newNotes = notes.filter((note) => note.id !== id);
 		setNotes(newNotes);
 	};
 

@@ -3,7 +3,6 @@ import { makeStyles } from "@mui/styles";
 import Typography from "@mui/material/Typography"; //import { Typography } from "@mui/material";
 import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
-import SendIcon from "@mui/icons-material/Send";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import TextField from "@mui/material/TextField";
 import Radio from "@mui/material/Radio";
@@ -38,11 +37,11 @@ export default function Create() {
 		setTitleError(false);
 		setDetailsError(false);
 
-		if (title == "") {
+		if (title === "") {
 			setTitleError(true);
 		}
 
-		if (details == "") {
+		if (details === "") {
 			setDetailsError(true);
 		}
 

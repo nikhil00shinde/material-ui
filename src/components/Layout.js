@@ -11,6 +11,9 @@ import {
 	useHistory,
 	useLocation,
 } from "react-router-dom/cjs/react-router-dom.min";
+import AppBar from "@mui/material/AppBar";
+import Toolbar from "@mui/material/Toolbar";
+import { format } from "date-fns";
 
 const drawerWidth = 240;
 
@@ -36,6 +39,13 @@ const useStyles = makeStyles((theme) => {
 		title: {
 			padding: theme.spacing(2),
 		},
+		appbar: {
+			width: `calc(100% - ${drawerWidth}px)!important`,
+		},
+		toolbar: theme.mixins.toolbar,
+		date: {
+			flexGrow: 1,
+		},
 	};
 });
 
@@ -60,6 +70,15 @@ export default function Layout({ children }) {
 	return (
 		<div className={classes.root}>
 			{/* app bar */}
+			<AppBar className={classes.appbar} elevation={0}>
+				<Toolbar>
+					<Typography className={classes.date}>
+						{/* {Date().toString()} */}
+						Today is the {format(new Date(), "do MMMM Y")}
+					</Typography>
+					<Typography>Mario</Typography>
+				</Toolbar>
+			</AppBar>
 
 			{/* side drawer */}
 			<Drawer
@@ -93,35 +112,17 @@ export default function Layout({ children }) {
 						</ListItem>
 					))}
 				</List>
-
-				{/* <List>
-					<ListItem>
-						<ListItemText primary="Hello" />
-					</ListItem>
-					<ListItem>
-						<ListItemText primary="Hello" />
-					</ListItem>
-					<ListItem>
-						<ListItemText primary="Hello" />
-					</ListItem>
-					<ListItem>
-						<ListItemText primary="Hello" />
-					</ListItem>
-					<ListItem>
-						<ListItemText primary="Hello" />
-					</ListItem>
-				</List> */}
 			</Drawer>
 
-			<div className={classes.page}>{children}</div>
+			<div className={classes.page}>
+				<div className={classes.toolbar}></div>
+				{children}
+			</div>
 		</div>
 	);
 }
 
-// hum makeStyle aur jyada tareeko se use kar sakte hain like padding
-// padding: theme.spacing(3) , which means 3 times the 8px
+// Appbar ke andhar toolbar hain
+// using theme we can get toolbar height
 
-
-// 2 thing we csn do with makeStyles 
-// 1. we could use a function to return a object, that function could take in theme, to use theme value.
-// 2. If we want to pass an extra argument  (useStyles(note)) to use in different properties. And that could just be a function , which takes in an argument, we can use it and also return some kind value
+// using formatted date we use Package called (data-fns)

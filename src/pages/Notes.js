@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import Grid from "@mui/material/Grid";
 import Container from "@mui/material/Container";
 import NoteCard from "../components/NoteCard";
+import Masonry from "react-masonry-css";
 
 export default function Notes() {
 	const [notes, setNotes] = useState([]);
@@ -21,19 +21,30 @@ export default function Notes() {
 		setNotes(newNotes);
 	};
 
+	const breakpoints = {
+		default: 3,
+		1100: 2,
+		700: 1,
+	};
+
 	return (
 		<Container>
-			<Grid container spacing={3}>
+			<Masonry
+				breakpointCols={breakpoints}
+				className="my-masonry-grid"
+				columnClassName="my-masonry-grid_column"
+			>
 				{notes.map((note) => {
 					return (
-						<Grid item key={note.id} xs={12} md={6} lg={4}>
+						<div key={note.id}>
 							<NoteCard note={note} handleDelete={handleDelete} />
-						</Grid>
+						</div>
 					);
 				})}
-			</Grid>
+			</Masonry>
 		</Container>
 	);
 }
 
-// we want to add spacing in our grid system
+// hum use karenge react-masonry-css, kyuki card sahi tarike se rakh paye
+// npm i react-masonry-css

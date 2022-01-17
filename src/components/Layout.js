@@ -14,6 +14,7 @@ import {
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import { format } from "date-fns";
+import Avatar from "@mui/material/Avatar";
 
 const drawerWidth = 240;
 
@@ -46,6 +47,9 @@ const useStyles = makeStyles((theme) => {
 		date: {
 			flexGrow: 1,
 		},
+		avatar: {
+			marginLeft: theme.spacing(2),
+		},
 	};
 });
 
@@ -77,6 +81,7 @@ export default function Layout({ children }) {
 						Today is the {format(new Date(), "do MMMM Y")}
 					</Typography>
 					<Typography>Mario</Typography>
+					<Avatar src="/mario-av.png" className={classes.avatar} />
 				</Toolbar>
 			</AppBar>
 
